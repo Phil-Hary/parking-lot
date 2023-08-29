@@ -1,0 +1,2 @@
+class InvalidGateTypeException(Exception):
+    pass

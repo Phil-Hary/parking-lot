@@ -1,0 +1,2 @@
+class InvalidSpotTypeException(Exception):
+    pass
