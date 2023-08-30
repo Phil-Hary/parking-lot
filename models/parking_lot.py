@@ -5,7 +5,7 @@ class ParkingLot:
         self.name = name
         self.address = address
         self.location = location
-        self.parking_levels = []
+        self.parking_levels = {}
     
     def add_parking_levels(self, parking_level):
         self.parking_levels.append(parking_level)

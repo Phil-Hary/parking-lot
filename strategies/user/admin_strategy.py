@@ -9,6 +9,7 @@ class AdminStrategy(UserStrategy):
             "Add parking lot",
             "Add parking level",
             "Display parking levels",
+            "Display parking level details",
             "Update parking spot status",
             "Update parking lot fee",
             "Add parking attendant",
@@ -42,6 +43,15 @@ class AdminStrategy(UserStrategy):
                     print(parking_level.name)
             else:
                 print("No parking levels")
+        
+        elif choice == "4":
+            parking_levels = AdminStrategy.parking_lot_controller.get_parking_levels()
+
+            if not parking_levels:
+                print("No parking levels")
+            
+            
+
 
      
     def dashboard(self):

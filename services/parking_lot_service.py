@@ -18,11 +18,14 @@ class ParkingLotService:
 
     def get_parking_levels(self):
         parking_lot = self.get_parking_lot()
-        return parking_lot.parking_levels
+        return parking_lot.parking_levels.values()
 
     def add_parking_levels(self, parking_level):
         parking_lot = self.get_parking_lot()
-        parking_lot.parking_levels.append(parking_level)
+        parking_lot.parking_levels[parking_level.name] = parking_level
+    
+    # def get_parking_level(self, parking_level_id):
+    #     for parking_
 
         
 

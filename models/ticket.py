@@ -3,7 +3,8 @@ import datetime
 class Ticket:
     ticket_id = 0
 
-    def __init__(self, vehicle, spot, parking_attenand) :
+    def __init__(self, vehicle, spot, parking_attenand):
+        Ticket.ticket_id += 1
         self.ticket_number = Ticket.ticket_id
         self.vehicle = vehicle
         self.time = datetime.datetime.now()
