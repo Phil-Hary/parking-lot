@@ -6,7 +6,7 @@ class ParkingSpot():
 
     def __init__(self, type):
         ParkingSpot.spot_id += 1
-        self.spot_number = ParkingSpot.spot_id
+        self.spot_number = f"{type.name[0]}-{ParkingSpot.spot_id}"
         self.type = type
         self.status = SpotStatus.AVAILABLE
         

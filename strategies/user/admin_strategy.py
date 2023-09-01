@@ -42,17 +42,16 @@ class AdminStrategy(UserStrategy):
                 for parking_level in parking_levels:
                     print(parking_level.name)
             else:
-                print("No parking levels")
-        
+                print("No parking levels")       
+            
         elif choice == "4":
             parking_levels = AdminStrategy.parking_lot_controller.get_parking_levels()
 
             if not parking_levels:
                 print("No parking levels")
-            
-            
 
-
+            parking_level_id = self.parking_lot_controller.get_parking_level_id_from_user()
+            self.parking_lot_controller.display_parking_level_details(parking_level_id)
      
     def dashboard(self):
         choice = None

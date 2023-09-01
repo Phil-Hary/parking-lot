@@ -58,9 +58,18 @@ class ParkingLotController:
         ParkingLotController.parking_level_controller.add_spots(parking_level, spot_details)
         ParkingLotController.parking_lot_service.add_parking_levels(parking_level)
     
-    def get_parking_level_details(self):
-        
-        parking_level_id = CommonUtils.get_data_from_user("parking_level_id")
+    def get_parking_level_id_from_user(self):
+        parking_level_details = CommonUtils.get_data_from_user(["parking_level_id"])
+        return parking_level_details.get("parking_level_id")
+    
+    def display_parking_level_details(self, parking_level_id):
+        parking_level = ParkingLotController.parking_lot_service.get_parking_level(parking_level_id)
+
+        if parking_level == None:
+            print("Parking level does not exists")
+            return
+    
+        ParkingLevelController.parking_level_service.display_parking_level(parking_level)
 
 
 

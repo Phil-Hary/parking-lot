@@ -15,21 +15,23 @@ class ParkingLevelService:
         spots = []
 
         for spot_type, count in spot_details.items():
-            parking_spot = ParkingSpot(
-                type=PARKING_SPOT_MAPPING.get(spot_type)
-            )
+            for spot_count in range(int(count)):
+                parking_spot = ParkingSpot(
+                    type=PARKING_SPOT_MAPPING.get(spot_type)
+                )
 
-            spots.append(parking_spot)
+                spots.append(parking_spot)
         
         parking_level.spots = spots
     
     def display_parking_level(self, parking_level):
-        parking_spots = parking_level.parking_spots
+        parking_spots = parking_level.spots
         idx = 0
 
         for parking_spot in parking_spots:
             if idx < 10:
-                print(parking_spot.spot_number)
+                print(parking_spot.spot_number, end=" ")
+                idx += 1
             
             if idx == 10:
                 print()

@@ -24,8 +24,9 @@ class ParkingLotService:
         parking_lot = self.get_parking_lot()
         parking_lot.parking_levels[parking_level.name] = parking_level
     
-    # def get_parking_level(self, parking_level_id):
-    #     for parking_
+    def get_parking_level(self, parking_level_id):
+        parking_lot = self.get_parking_lot()
+        return parking_lot.parking_levels.get(parking_level_id, None)
 
         
 
