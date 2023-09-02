@@ -1,2 +1,3 @@
 from .parking_lot_controller import ParkingLotController
 from .user_controller import UserController
+from .parking_spot_controller import ParkingSpotController

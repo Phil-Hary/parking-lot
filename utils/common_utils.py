@@ -16,3 +16,19 @@ class CommonUtils:
                     valid = True
         
         return user_data
+
+    def strikethrough(string):
+        striked_character = ""
+
+        for character in string:
+            striked_character += character + "\u0336"
+        
+        return striked_character
+
+    def get_icon(icon_type):
+        if icon_type == "BLOCKED":
+            return "\u25A9"
+        elif icon_type == "AVAILABLE":
+            return "\u25AF"
+        elif icon_type == "OCCUPIED":
+            return "\u2592"

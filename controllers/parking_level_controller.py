@@ -12,6 +12,3 @@ class ParkingLevelController:
     def display_parking_level_details(self, parking_level):
         ParkingLevelController.parking_level_service.display_parking_level(parking_level)
     
-    def get_parking_level(self, parking_level_id):
-        pass
-

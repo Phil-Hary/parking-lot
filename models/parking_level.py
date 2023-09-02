@@ -1,6 +1,6 @@
 class ParkingLevel:
     name = None
-    parking_spots = []
+    parking_spots = {}
     gates = []
 
     def __init__(self, name, gates):

@@ -2,12 +2,14 @@ from services import ParkingLotService
 from utils import CommonUtils
 from .gate_controller import GateController
 from .parking_level_controller import ParkingLevelController
+from .parking_spot_controller import ParkingSpotController
 from enums import GateType
 
 class ParkingLotController:
     parking_lot_service = ParkingLotService()
     gate_controller = GateController()
     parking_level_controller = ParkingLevelController()
+    parking_spot_controller = ParkingSpotController()
 
     def add_parking_lot(self):
         if self.parking_lot_service.is_parking_lot_defined():
@@ -61,15 +63,25 @@ class ParkingLotController:
     def get_parking_level_id_from_user(self):
         parking_level_details = CommonUtils.get_data_from_user(["parking_level_id"])
         return parking_level_details.get("parking_level_id")
+
+    def get_parking_spot_number_from_user(self):
+        parking_spot_details = CommonUtils.get_data_from_user(["parking_spot_number"])
+        return parking_spot_details.get("parking_spot_number")
     
     def display_parking_level_details(self, parking_level_id):
-        parking_level = ParkingLotController.parking_lot_service.get_parking_level(parking_level_id)
+        parking_level = self.parking_lot_service.get_parking_level(parking_level_id)
 
         if parking_level == None:
             print("Parking level does not exists")
             return
     
         ParkingLevelController.parking_level_service.display_parking_level(parking_level)
+    
+    def toggle_parking_spot_status(self, parking_level_id, spot_number):
+        parking_level = self.parking_lot_service.get_parking_level(parking_level_id)
+        parking_spot = self.parking_lot_service.get_parking_spot(parking_level, spot_number)
+        self.parking_spot_controller.toggle_parking_status(parking_spot)
+
 
 
 
