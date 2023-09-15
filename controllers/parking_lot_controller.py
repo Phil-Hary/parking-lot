@@ -3,6 +3,7 @@ from utils import CommonUtils
 from .gate_controller import GateController
 from .parking_level_controller import ParkingLevelController
 from .parking_spot_controller import ParkingSpotController
+from .parking_fee_controller import ParkingFeeController
 from enums import GateType
 
 class ParkingLotController:
@@ -10,6 +11,7 @@ class ParkingLotController:
     gate_controller = GateController()
     parking_level_controller = ParkingLevelController()
     parking_spot_controller = ParkingSpotController()
+    parking_fee_controller = ParkingFeeController()
 
     def add_parking_lot(self):
         if self.parking_lot_service.is_parking_lot_defined():
@@ -81,6 +83,26 @@ class ParkingLotController:
         parking_level = self.parking_lot_service.get_parking_level(parking_level_id)
         parking_spot = self.parking_lot_service.get_parking_spot(parking_level, spot_number)
         self.parking_spot_controller.toggle_parking_status(parking_spot)
+    
+    def set_parking_fees(self):
+        parking_fee_details = CommonUtils.get_data_from_user(["vehicle_type", "day_type", "first_hour_fee", "second_hour_fee", "third_hour_and_beyond_fee"])
+        status, message = self.parking_fee_controller.is_parking_fee_valid(parking_fee_details)
+
+        if not status:
+            print(message)
+
+        vehicle_type = parking_fee_details.get("vehicle_type")
+        day_type = parking_fee_details.get("day_type")
+        
+        for category in ["first_hour_fee", "second_hour_fee", "third_hour_and_beyond_fee"]:
+            fee = parking_fee_details.get(category)
+            self.parking_fee_controller.set_parking_fee(vehicle_type, day_type, category, fee)
+    
+    def display_parking_fee_details(self):
+        parking_fee_details = self.parking_fee_controller.get_all_parking_fees()
+        print(parking_fee_details)
+        
+
 
 
 

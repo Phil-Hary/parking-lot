@@ -11,7 +11,8 @@ class AdminStrategy(UserStrategy):
             "Display parking levels",
             "Display parking level details",
             "Toggle parking spot status",
-            "Update parking lot fee",
+            "Set parking lot fee",
+            "Display parking lot fees",
             "Add parking attendant",
             "Assign parking attendant",
             "Generate Ticket",
@@ -61,7 +62,13 @@ class AdminStrategy(UserStrategy):
 
             parking_level_id = self.parking_lot_controller.get_parking_level_id_from_user()
             parking_spot_number = self.parking_lot_controller.get_parking_spot_number_from_user()
-            self.parking_lot_controller.toggle_parking_spot_status(parking_level_id, parking_spot_number) 
+            self.parking_lot_controller.toggle_parking_spot_status(parking_level_id, parking_spot_number)
+        
+        elif choice == "6":
+            self.parking_lot_controller.set_parking_fees()
+        
+        elif choice == "7":
+            self.parking_lot_controller.display_parking_fee_details()
      
     def dashboard(self):
         choice = None

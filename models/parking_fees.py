@@ -16,13 +16,13 @@ class ParkingFee:
         return day_type_based_details(category, None)
 
     staticmethod
-    def set_parking_fee(self, vehicle_type, day_type, category, fee):
-        vehicle_fee_details = self.parking_fees_map.get(vehicle_type, None)
-
+    def set_parking_fee(vehicle_type, day_type, category, fee):
+        vehicle_fee_details = ParkingFee.parking_fees_map.get(vehicle_type, None)
         if not vehicle_fee_details:
-            self.parking_fees_map[vehicle_type] = {
-                [day_type]: {
-                    [category]: fee
+            ParkingFee.parking_fees_map[vehicle_type] = {
+                **ParkingFee.parking_fees_map.get(vehicle_type, {}),
+                day_type: {
+                    category: fee
                 }
             }
 
@@ -32,7 +32,7 @@ class ParkingFee:
 
         if not day_type_based_details:
             vehicle_fee_details[day_type] = {
-                [category]: fee
+                category: fee
             }
 
             return 
