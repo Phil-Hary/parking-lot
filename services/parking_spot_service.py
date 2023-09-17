@@ -10,3 +10,5 @@ class ParkingSpotService:
             self.update_parking_spot_status(parking_spot, SpotStatus.BLOCKED)
         else:
             self.toggle_parking_status(parking_spot, SpotStatus.AVAILABLE)
+
+    

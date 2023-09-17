@@ -12,3 +12,8 @@ class ParkingLevelController:
     def display_parking_level_details(self, parking_level):
         ParkingLevelController.parking_level_service.display_parking_level(parking_level)
     
+    def get_gate(self, parking_level, gate_id):
+        return self.parking_level_service.get_gate(parking_level, gate_id)
+    
+    def get_paking_spot(self, parking_level, spot_number):
+        return self.parking_level_service.get_paking_spot(parking_level, spot_number)

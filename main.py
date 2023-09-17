@@ -12,7 +12,7 @@ class ParkingLotApp:
         print("Parking Lot Application")
         user = self.user_controller.login()
 
-        user_strategy = get_user_strategy(user.type)
+        user_strategy = get_user_strategy(user)
         user_strategy.dashboard()
 
 if __name__ == "__main__":

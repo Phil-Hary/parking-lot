@@ -6,6 +6,7 @@ class ParkingLot:
         self.address = address
         self.location = location
         self.parking_levels = {}
+        self.attendants = {}
     
     def add_parking_levels(self, parking_level):
         self.parking_levels.append(parking_level)

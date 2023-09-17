@@ -3,6 +3,9 @@ from controllers import ParkingLotController
 
 class AdminStrategy(UserStrategy):
     parking_lot_controller = ParkingLotController()
+
+    def __init__(self, user):
+        self.user = user
     
     def display_menu(self):
         admin_operations = [
@@ -14,6 +17,7 @@ class AdminStrategy(UserStrategy):
             "Set parking lot fee",
             "Display parking lot fees",
             "Add parking attendant",
+            "View parking attendants",
             "Assign parking attendant",
             "Generate Ticket",
             "Generate Invoice"
@@ -69,6 +73,18 @@ class AdminStrategy(UserStrategy):
         
         elif choice == "7":
             self.parking_lot_controller.display_parking_fee_details()
+        
+        elif choice == "8":
+            self.parking_lot_controller.add_parking_attendant()
+
+        elif choice == "9":
+            self.parking_lot_controller.display_parking_attendants()
+        
+        elif choice == "10":
+            self.parking_lot_controller.assign_parking_attendant_to_gate()
+        
+        elif choice == "11":
+            self.parking_lot_controller.book_ticket(self.user)
      
     def dashboard(self):
         choice = None

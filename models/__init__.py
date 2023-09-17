@@ -7,3 +7,4 @@ from .parking_spot import ParkingSpot
 from .ticket import Ticket
 from .user import User
 from .vehicle import Vehicle
+from .parking_attendant import ParkingAttendant

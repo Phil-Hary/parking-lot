@@ -36,6 +36,13 @@ class ParkingLevelService:
             if idx == 10:
                 print()
                 idx = 0
+    
+    def get_gate(self, parking_level, gate_id):
+        return parking_level.gates.get(gate_id, None)
+
+    def get_paking_spot(self, parking_level, spot_number):
+        return parking_level.parking_spots.get(spot_number, None)
+
 
 
 

@@ -31,7 +31,26 @@ class ParkingLotService:
     def get_parking_spot(self, parking_level, spot_number):
         parking_spot = parking_level.parking_spots.get(spot_number, None)
         return parking_spot
-        
+    
+    def add_parking_attendant(self, parking_attendant):
+        ParkingLot.parking_lot.attendants[parking_attendant.id] = {
+            "details": parking_attendant
+        }
+    
+    def get_parking_attendants(self):
+        return ParkingLot.parking_lot.attendants
+    
+    def get_parking_attendant(self, parking_attendant_id):
+        parking_lot = self.get_parking_lot()
+        parking_attendant_meta = parking_lot.attendants.get(parking_attendant_id, {})
+        return parking_attendant_meta.get("details", None)
+
+    def assign_gate_to_parking_attendant(self, parking_attendant_id, gate):
+        parking_lot = self.get_parking_lot()
+        parking_lot.attendants[parking_attendant_id] = {
+            **parking_lot.attendants[parking_attendant_id],
+            "gate": gate
+        }
 
 
 
